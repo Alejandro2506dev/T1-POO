@@ -1,0 +1,164 @@
+﻿@model T1_POO.Models.Empleado
+
+@using System.Collections.Generic
+@using T1_POO.Models
+
+@{
+    ViewBag.Title = "Planilla de empleados";
+
+    List<Empleado> empleados =
+        ViewBag.Planilla as List<Empleado>;
+}
+
+<h2>Planilla de empleados</h2>
+
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Mensaje"]
+    </div>
+}
+
+@using (Html.BeginForm("Planilla", "Empleado", FormMethod.Post))
+{
+    <div class="form-horizontal">
+
+        <h4>Datos del empleado</h4>
+        <hr />
+
+        @Html.ValidationSummary(
+            true,
+            "",
+            new { @class = "text-danger" }
+        )
+
+        <div class="form-group">
+            @Html.LabelFor(
+                model => model.idEmpleado,
+                "Código",
+                new { @class = "control-label col-md-2" }
+            )
+
+            <div class="col-md-10">
+                @Html.TextBoxFor(
+                    model => model.idEmpleado,
+                    new { @class = "form-control" }
+                )
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(
+                model => model.nomapeEmpleado,
+                "Nombre y apellido",
+                new { @class = "control-label col-md-2" }
+            )
+
+            <div class="col-md-10">
+                @Html.TextBoxFor(
+                    model => model.nomapeEmpleado,
+                    new { @class = "form-control" }
+                )
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(
+                model => model.categoriaEmpleado,
+                "Categoría",
+                new { @class = "control-label col-md-2" }
+            )
+
+            <div class="col-md-10">
+                @Html.DropDownListFor(
+                    model => model.categoriaEmpleado,
+                    new List<SelectListItem>
+                    {
+                        new SelectListItem
+                        {
+                            Text = "E1",
+                            Value = "E1"
+                        },
+                        new SelectListItem
+                        {
+                            Text = "E2",
+                            Value = "E2"
+                        },
+                        new SelectListItem
+                        {
+                            Text = "E3",
+                            Value = "E3"
+                        },
+                        new SelectListItem
+                        {
+                            Text = "E4",
+                            Value = "E4"
+                        }
+                    },
+                    "Seleccione una categoría",
+                    new { @class = "form-control" }
+                )
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(
+                model => model.nHijos,
+                "Número de hijos",
+                new { @class = "control-label col-md-2" }
+            )
+
+            <div class="col-md-10">
+                @Html.TextBoxFor(
+                    model => model.nHijos,
+                    new
+                    {
+                        @class = "form-control",
+                        type = "number",
+                        min = "0"
+                    }
+                )
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(
+                model => model.tipoContrato,
+                "Tipo de contrato",
+                new { @class = "control-label col-md-2" }
+            )
+
+            <div class="col-md-10">
+                @Html.DropDownListFor(
+                    model => model.tipoContrato,
+                    new List<SelectListItem>
+                    {
+                        new SelectListItem
+                        {
+                            Text = "Indefinido",
+                            Value = "INDEFINIDO"
+                        },
+                        new SelectListItem
+                        {
+                            Text = "Contratado",
+                            Value = "CONTRATADO"
+                        }
+                    },
+                    "Seleccione un contrato",
+                    new { @class = "form-control" }
+                )
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit"
+                        class="btn btn-primary">
+
+                    AGREGAR EMPLEADO
+
+                </button>
+            </div>
+        </div>
+    </div>
+}

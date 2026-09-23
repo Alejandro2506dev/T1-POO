@@ -1,0 +1,33 @@
+# Visual Studio
+.vs/
+**/.vs/
+
+# Paquetes NuGet restaurables
+packages/
+**/packages/
+
+# Archivos compilados
+bin/
+obj/
+[Bb]in/
+[Oo]bj/
+**/[Bb]in/
+**/[Oo]bj/
+
+# Archivos personales
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.vsidx
+
+# Resultados de compilación
+[Dd]ebug/
+[Rr]elease/
+**/[Dd]ebug/
+**/[Rr]elease/
+
+# Archivos temporales
+*.log
+*.tmp
+*.temp
